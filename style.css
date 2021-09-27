@@ -2,9 +2,12 @@
 :root {
   /*Color*/
   --color-white: rgba(255, 255, 255, 0.979);
-  --color-light-gray: rgb(207, 207, 207);
+  --color-light-gray: rgb(129, 129, 129);
+  --color-gray: rgb(97, 97, 97);
+  --color-dark-gray: rgb(65, 65, 65);
   --color-black: rgb(20, 20, 20);
   --color-beige: rgb(165, 154, 141);
+  --color-light-beige: rgb(204, 163, 120);
 
   /*Font size*/
   --font-large: 48px;
@@ -132,7 +135,11 @@ p {
 .section {
   padding: 50px;
   text-align: center;
-  max-width: 1200px;
+  margin: auto;
+}
+
+.section__container {
+  max-width: 1100px;
   margin: auto;
 }
 
@@ -187,4 +194,65 @@ p {
 
 .school__period {
   font-size: var(--font-micro);
+}
+
+/**Skills**/
+#skills {
+  background-color: rgb(224, 211, 188);
+  color: var(--color-white);
+}
+
+.skillset {
+  display: flex;
+  font-size: var(--font-micro);
+  margin: 20px 0;
+}
+
+.skillset .skillset__title {
+  margin: 0;
+  padding: 12px 0;
+  color: var(--color-white);
+}
+
+.skillset__left {
+  flex-basis: 60%;
+  background-color: var(--color-dark-gray);
+  padding: 20px 40px;
+}
+
+.skillset__left .skill {
+  margin-bottom: 24px;
+}
+
+.skillset__left .skill__desc {
+  display: flex;
+  justify-content: space-between;
+}
+
+.skill__bar {
+  width: 100%;
+  height: 3px;
+  background-color: var(--color-gray);
+}
+
+.skill__value {
+  height: 3px;
+  background-color: var(--color-light-beige);
+}
+
+.skillset__right {
+  flex-basis: 40%;
+}
+
+.skillset__right .tools,
+.skillset__right .etc {
+  padding: 20px;
+}
+
+.skillset__right .tools {
+  background-color: var(--color-gray);
+}
+
+.skillset__right .etc {
+  background-color: var(--color-light-gray);
 }
