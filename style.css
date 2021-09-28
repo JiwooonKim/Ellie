@@ -311,8 +311,8 @@ p {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 280px;
-  height: 250px;
+  width: 240px;
+  height: 240px;
   margin: 2px;
   background-color: var(--color-white-gray);
   padding: 8px;
