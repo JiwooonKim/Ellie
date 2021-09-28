@@ -408,3 +408,19 @@ p {
 .testi_speach a {
   color: var(--color-black);
 }
+
+/**Contact**/
+.contact__title {
+  margin: 32px 0;
+}
+
+.contact__links {
+  font-size: var(--font-medium);
+  margin: 24px 0;
+  transition: all 1s ease-in;
+}
+
+.contact__links i:hover {
+  transform: scale(1.1);
+  color: var(--color-beige);
+}
