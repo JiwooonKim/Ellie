@@ -2,12 +2,13 @@
 :root {
   /*Color*/
   --color-white: rgba(255, 255, 255, 0.979);
+  --color-white-gray: rgb(240, 235, 231);
   --color-light-gray: rgb(129, 129, 129);
   --color-gray: rgb(97, 97, 97);
   --color-dark-gray: rgb(65, 65, 65);
   --color-black: rgb(20, 20, 20);
   --color-beige: rgb(165, 154, 141);
-  --color-light-beige: rgb(204, 163, 120);
+  --color-light-beige: rgb(231, 203, 173);
 
   /*Font size*/
   --font-large: 48px;
@@ -260,4 +261,108 @@ p {
 
 .skillset__right .etc {
   background-color: var(--color-light-gray);
+}
+
+/*Work*/
+.work__categories {
+  margin: 48px;
+}
+.category__btn {
+  border: 1px solid var(--color-light-gray);
+  border-radius: var(--size-border-radius);
+  padding: 8px 48px;
+}
+
+.category__btn.active,
+.category__btn:hover {
+  background-color: var(--color-light-beige);
+  color: var(--color-white);
+}
+
+.category_count {
+  display: inline-block;
+  background-color: rgb(245, 245, 224);
+  border-radius: 50%;
+  color: var(--color-black);
+  width: 20px;
+  height: 20px;
+  line-height: 22px;
+  position: relative;
+  top: -20px;
+  left: 4px;
+  opacity: 0;
+  transition: all 300ms ease;
+}
+
+.category__btn.active .category_count,
+.category__btn:hover .category_count {
+  opacity: 1;
+  top: 0;
+}
+
+.work__projects {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.project {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 280px;
+  height: 250px;
+  margin: 2px;
+  background-color: var(--color-white-gray);
+  padding: 8px;
+}
+
+.project__img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.project__desc {
+  position: absolute;
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  top: 0;
+  left: 0%;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  padding: 12px;
+  transform: translateY(10px);
+  transition: all 300ms ease-in;
+}
+
+.project:hover .project__desc {
+  opacity: 0.9;
+  transform: translateY(0px);
+}
+
+.project__desc h3,
+.project__desc span {
+  color: var(--color-white);
+}
+
+.project__desc span {
+  font-size: var(--font-micro);
+  margin-top: 12px;
+  line-height: 20px;
+}
+
+.project__desc h3:after {
+  content: "";
+  position: relative;
+  width: 25px;
+  height: 2px;
+  background-color: var(--color-white);
+  display: block;
+  left: 50%;
+  margin-left: -12px;
+  margin-top: 8px;
 }
