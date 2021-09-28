@@ -134,7 +134,7 @@ p {
 
 /**Section common**/
 .section {
-  padding: 50px;
+  padding: 60px 50px 90px;
   text-align: center;
   margin: auto;
 }
@@ -365,4 +365,46 @@ p {
   left: 50%;
   margin-left: -12px;
   margin-top: 8px;
+}
+
+/**Testimonials**/
+#testimonials {
+  background-color: var(--color-white-gray);
+}
+
+.testi__box {
+  margin: 40px;
+}
+
+.testi {
+  display: flex;
+  margin: 32px 0;
+}
+
+.testi__avatar {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+}
+
+.testi__avatar:nth-child(odd) {
+  margin-right: 30px;
+}
+
+.testi__avatar:nth-child(even) {
+  margin-left: 30px;
+}
+
+.testi_speach {
+  padding: 24px;
+  background-color: var(--color-white);
+  border-radius: var(--size-border-radius);
+}
+
+.testi_speach p {
+  color: var(--color-gray);
+}
+
+.testi_speach a {
+  color: var(--color-black);
 }
