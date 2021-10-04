@@ -67,12 +67,21 @@ p {
 
 /**Navbar**/
 #navbar {
+  position: fixed;
   display: flex;
   justify-content: space-between;
-  background-color: var(--color-black);
+  width: 100%;
+  background-color: transparent;
   color: var(--color-white);
   align-items: center;
   padding: 10px 16px;
+  transition: all 500ms ease-in-out;
+}
+
+#navbar.navbar--dark {
+  background-color: var(--color-black);
+  z-index: 9999;
+  padding: 8px;
 }
 
 #navbar .navbar__logo {
@@ -122,7 +131,7 @@ p {
 /**Home**/
 #home {
   background: url("imgs/homebackground1.jpg") center / cover no-repeat;
-  padding: 40px;
+  padding: 98px 40px 40px;
   text-align: center;
 }
 
