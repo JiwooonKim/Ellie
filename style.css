@@ -109,6 +109,7 @@ p {
   margin: 0 4px;
   cursor: pointer;
   border-radius: var(--size-border-radius);
+  transition: all 300ms ease-in;
 }
 
 #navbar .navbar__menu__item.active {
@@ -148,6 +149,11 @@ p {
   padding: 8px 12px;
   border: 2px solid var(--color-black);
   border-radius: var(--size-border-radius);
+  transition: all 300ms ease-in;
+}
+
+.home__contact:hover {
+  background-color: var(--color-beige);
 }
 
 /**Section common**/
