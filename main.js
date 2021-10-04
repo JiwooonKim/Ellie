@@ -11,6 +11,12 @@ document.addEventListener('scroll',() => {
   }
 });
 
+//scroll
+function scrollIntoView(selector) {
+  const scrollTo = document.querySelector(selector);
+  scrollTo.scrollIntoView({ behavior: 'smooth' });
+}
+
 //Handle scrolling when tapping on the navbar menu
 const navbarMenu = document.querySelector('.navbar__menu');
 navbarMenu.addEventListener('click', (event)=> {
@@ -19,15 +25,12 @@ navbarMenu.addEventListener('click', (event)=> {
   if (link == null) {
     return;
   } 
-  const scrollTo = document.querySelector(link);
-  scrollTo.scrollIntoView({ behavior: 'smooth' });
-
-  console.log(event.target.dataset.link);
+  scrollIntoView(link);
 });
 
-/*
-//Scrolling when click the button
-const contactBtn = documnet.query.Selector('.home__contact');
-document.addEventListener('click', ()=>{
+//Handle click on "contact me" button on home
+const homeContactBtn = document.querySelector('.home__contact');
+homeContactBtn.addEventListener('click',() => {
+  scrollIntoView('#contact');
+})
 
-})*/
