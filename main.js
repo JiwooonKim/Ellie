@@ -22,6 +22,7 @@ document.addEventListener('scroll',() => {
   }
 });
 
+
 //Handle scrolling when tapping on the navbar menu
 const navbarMenu = document.querySelector('.navbar__menu');
 navbarMenu.addEventListener('click', (event)=> {
@@ -30,14 +31,26 @@ navbarMenu.addEventListener('click', (event)=> {
   if (link == null) {
     return;
   } 
+  //스크롤링 될 때 메뉴 열리는 거 없어짐
+  navbarMenu.classList.remove('open');
   scrollIntoView(link);
 });
+
+
+//Navbar toggle button for mobile screen 
+const navbarToggleBtn = document.querySelector('.navbar__toggleBtn');
+navbarToggleBtn.addEventListener('click', () => {
+  navbarMenu.classList.toggle('open');
+});
+
+
 
 //Handle click on "contact me" button on home
 const homeContactBtn = document.querySelector('.home__contact');
 homeContactBtn.addEventListener('click',() => {
   scrollIntoView('#contact');
 })
+
 
 //Make home slowly fade to transparent as the widow scrolls down
 const home = document.querySelector('.home__content');
@@ -57,10 +70,12 @@ document.addEventListener('scroll', () => {
   }
 });
 
+
 //Handle click on the "arrow up" button
 arrowUpBtn.addEventListener('click', () => {
   scrollIntoView('#home');
 });
+
 
 //Project
 const workBtnContainer = document.querySelector('.work__categories');

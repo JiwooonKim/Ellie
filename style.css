@@ -99,20 +99,21 @@ opacity로 줄 경우에는 보이지 않지만 클릭은 여전히 되기 때�
   display: flex;
   justify-content: space-between;
   width: 100%;
-  background-color: transparent;
+  background: linear-gradient(var(--color-dark-gray), transparent);
   color: var(--color-white);
   align-items: center;
-  padding: 10px 16px;
+  padding: 8px 16px;
   transition: all 500ms ease-in-out;
 }
 
 #navbar.navbar--dark {
+  background: none;
   background-color: var(--color-black);
   z-index: 9999;
-  padding: 8px;
+  padding: 6px;
 }
 
-#navbar .navbar__logo {
+.navbar__logo {
   display: flex;
   align-items: center;
   font-size: var(--font-regular);
@@ -120,19 +121,19 @@ opacity로 줄 경우에는 보이지 않지만 클릭은 여전히 되기 때�
   color: var(--color-white);
 }
 
-#navbar .navbar__logo img {
+.navbar__logo img {
   width: 70px;
 }
 
-#navbar .navbar__logo a {
+.navbar__logo a {
   color: var(--color-white);
 }
 
-#navbar .navbar__menu {
+.navbar__menu {
   display: flex;
 }
 
-#navbar .navbar__menu__item {
+.navbar__menu__item {
   padding: 8px 12px;
   margin: 0 4px;
   cursor: pointer;
@@ -141,7 +142,7 @@ opacity로 줄 경우에는 보이지 않지만 클릭은 여전히 되기 때�
   border: 1px solid transparent;
 }
 
-#navbar .navbar__menu__item:hover {
+.navbar__menu__item:hover {
   border-color: var(--color-white);
   background-color: var(--color-beige);
 }
@@ -406,7 +407,10 @@ opacity로 줄 경우에는 보이지 않지만 클릭은 여전히 되기 때�
   transform: translateY(0px);
 }
 
-.project__desc h3,
+.project__desc h3 {
+  color: var(--color-beige);
+  font-weight: 600;
+}
 .project__desc span {
   color: var(--color-white);
 }
@@ -420,13 +424,13 @@ opacity로 줄 경우에는 보이지 않지만 클릭은 여전히 되기 때�
 .project__desc h3:after {
   content: "";
   position: relative;
-  width: 25px;
+  width: 50px;
   height: 2px;
   background-color: var(--color-white);
   display: block;
+  top: 10px;
   left: 50%;
-  margin-left: -12px;
-  margin-top: 8px;
+  transform: translateX(-50%);
 }
 
 /**Testimonials**/
@@ -491,16 +495,18 @@ opacity로 줄 경우에는 보이지 않지만 클릭은 여전히 되기 때�
 @media screen and (max-width: 960px) {
   #navbar {
     flex-direction: column;
-  }
-  .navbar_box {
-    width: 100%;
-    display: none;
+    background-color: var(--color-black);
   }
 
   .navbar__menu {
     flex-direction: column;
     text-align: center;
     width: 100%;
+    display: none;
+  }
+
+  .navbar__menu.open {
+    display: block;
   }
 
   .navbar__menu__item {
