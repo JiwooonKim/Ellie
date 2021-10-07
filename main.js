@@ -73,7 +73,14 @@ workBtnContainer.addEventListener('click', (e) => {
   if(filter == null) {
     return;
   }
-  /*
+
+  projectContainer.classList.add('anime-out');
+  
+  //setTimeout을 지정하지 않으면 anime-out이 계속 남아있어 opacity가 0으로 유지되어 보이지 않음. opacity가 1로 돌아올 수 있도록 anime-out을 지워야함.
+
+  //setTimeout은 우리가 등록한 함수를 지정한 시간 뒤에 불러주는 메소드
+  setTimeout(() => {
+    /*
   forEach와 같은 것
   (1) for(let project of projects) {
   }
@@ -82,10 +89,7 @@ workBtnContainer.addEventListener('click', (e) => {
     project = projects[i];
   }
   */
-
   //project를 배열형태로 받아옴.
-  console.log(filter);
-  
   projects.forEach((project) => {
     console.log(project.dataset.type);
 
@@ -96,8 +100,11 @@ workBtnContainer.addEventListener('click', (e) => {
       //해당이 안되면 안보여지도록
     } else {
       project.classList.add('invisible');
-    }
-  });
+      }
+    });
+    projectContainer.classList.remove('anime-out');
+  }, 300);
+  
 });
 
 
