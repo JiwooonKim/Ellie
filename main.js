@@ -74,6 +74,18 @@ workBtnContainer.addEventListener('click', (e) => {
     return;
   }
 
+  //Remove selection from the previous item the select the new one
+  const active = document.querySelector('.category__btn.selected');
+  active.classList.remove('selected');
+
+  //! 버튼 중 알림(span)을 클릭하면 에러가 발생 -> e.target이 span을 가리키기 때문. (slected는 button에 지정되어 있음)
+  //클릭된 target의 node name이 BUTTON이면 e.target을 쓰고 아니면 e.target.parentNode를 사용.(span의 parentNode는 button)
+  const target = 
+  e.target.nodeName === 'BUTTON' ? e.target : e.target.parentNode;
+
+  target.classList.add('selected');
+
+
   projectContainer.classList.add('anime-out');
   
   //setTimeout을 지정하지 않으면 anime-out이 계속 남아있어 opacity가 0으로 유지되어 보이지 않음. opacity가 1로 돌아올 수 있도록 anime-out을 지워야함.
@@ -81,15 +93,15 @@ workBtnContainer.addEventListener('click', (e) => {
   //setTimeout은 우리가 등록한 함수를 지정한 시간 뒤에 불러주는 메소드
   setTimeout(() => {
     /*
-  forEach와 같은 것
-  (1) for(let project of projects) {
-  }
+    forEach와 같은 것
+    (1) for(let project of projects) {
+    }
 
-  (2) for( let i = 0; i < projects.length; i++ ) {
-    project = projects[i];
-  }
+    (2) for( let i = 0; i < projects.length; i++ ) {
+      project = projects[i];
+    }
   */
-  //project를 배열형태로 받아옴.
+   //project를 배열형태로 받아옴.
   projects.forEach((project) => {
     console.log(project.dataset.type);
 
