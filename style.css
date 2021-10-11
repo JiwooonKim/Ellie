@@ -142,6 +142,11 @@ opacity로 줄 경우에는 보이지 않지만 클릭은 여전히 되기 때�
   border: 1px solid transparent;
 }
 
+.navbar__menu__item.active {
+  border-color: var(--color-white);
+  background-color: var(--color-beige);
+}
+
 .navbar__menu__item:hover {
   border-color: var(--color-white);
   background-color: var(--color-beige);

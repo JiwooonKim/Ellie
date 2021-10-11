@@ -4,13 +4,6 @@
 scrollIntoView(): 이 메소드는  scrollIntoView()가 호출된 요소가 사용자에게 표시되도록 요소의 상위 컨테이너를 스크롤 한다.
 */
 
-//scroll
-function scrollIntoView(selector) {
-  const scrollTo = document.querySelector(selector);
-  scrollTo.scrollIntoView({ behavior: 'smooth' });
-}
-
-
 //Make navbar transparent when it is on the top
 const navbar = document.querySelector('#navbar');
 const navbarHeight = navbar.getBoundingClientRect().height;
@@ -131,8 +124,87 @@ workBtnContainer.addEventListener('click', (e) => {
     });
     projectContainer.classList.remove('anime-out');
   }, 300);
-  
 });
 
+//1. 모든 섹션 요소들과 아이템들을 가지고 온다
+//2. InterSectionObserver를 이용해서 모든 섹션들을 관찰한다
+//3. 보여지는 섹션에 해당하는 메뉴 아이템을 활성화 시킨다.
 
+const sectionIds = [
+  '#home',
+  '#about',
+  '#skills',
+  '#work',
+  '#testimonials',
+  '#contact',
+];
+
+//map: 배열을 빙글빙글 돌면서 새로운 것으로 변환할 수 있는 API
+const sections = sectionIds.map(id => document.querySelector(id));
+const navItems = sectionIds.map(id => 
+  document.querySelector(`[data-link="${id}"]`));
+console.log(sections);
+console.log(navItems);
+
+let selectedNavIndex = 0;  //다음에 선택되야하는 인덱스 저장
+let selectedNavItem = navItems[0];
+function selectNavItem(selected) {
+  selectedNavItem.classList.remove('active');
+  selectedNavItem = selected;
+  selectedNavItem.classList.add('active');
+}
+
+//scroll
+function scrollIntoView(selector) {
+  const scrollTo = document.querySelector(selector);
+  scrollTo.scrollIntoView({ behavior: 'smooth' });
+  //!arrowup 버튼 눌렀을 때 nav active 되지 않는 오류 해결
+  selectNavItem(navItems[sectionIds.indexOf(selector)]);
+}
+
+const observerOptions = {
+  root: null,
+  rootMargin: '0px',
+  threshold: 0.3,
+}
+
+const observerCallback = (entries, observer) => {
+  entries.forEach(entry => {
+    //빠져나갈 때
+    //! entry.intersectionRatio > 0 은 화면 시작에서 testimonials가 active 되어 있기때문
+    if(!entry.isIntersecting && entry.intersectionRatio > 0) {
+      const index = sectionIds.indexOf(`#${entry.target.id}`);
+
+      //아래로 스크롤 되어 페이지가 위로 올라감
+      if(entry.boundingClientRect.y < 0) {
+        selectedNavIndex = index + 1;
+      } else {
+        selectedNavIndex = index - 1;
+      }
+    }
+  });
+}
+
+const observer = new IntersectionObserver(observerCallback, observerOptions);
+sections.forEach(section => observer.observe(section));
+
+console.log(Math.round(window.scrollY + window.innerHeight));
+console.log(document.body.clientHeight);
+
+window.addEventListener('wheel', () => {
+  //scrollY가 제일 위라면
+  if (window.scrollY === 0) {
+    selectedNavIndex = 0;
+  } 
+  //scroll이 제일 밑에 도달했다면
+  else if (
+    //scrollHeihgt clientHeight 차이 공부하기
+    Math.round(window.scrollY + window.innerHeight) >= document.body.scrollHeight
+    ) {
+      //배열의 마지막 인덱스를 지정
+      selectedNavIndex = navItems.length - 1;
+  }
+  //selectedNavItem 함수에 선택된 navItems를 전달해줌.
+  selectNavItem(navItems[selectedNavIndex]);
+})
 
